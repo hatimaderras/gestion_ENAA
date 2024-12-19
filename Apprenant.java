@@ -30,4 +30,19 @@ public class Apprenant {
     public String getEmail() {
         return email;
     }
+    @Override
+    public String toString() {
+        StringBuilder notesString = new StringBuilder();
+        if (notes != null && notes.length > 0) {
+            for (int note : notes) {
+                notesString.append(note).append(" ");
+            }
+        }
+
+        if (notesString.length() > 500) {
+            notesString.setLength(500);
+            notesString.append("...");
+        }
+        return "Apprenant [ID=" + id + ", Nom=" + nom + ", Prenom=" + prenom + ", Email=" + email + ", Notes=" + notesString.toString().trim() + "]";
+    }
 }

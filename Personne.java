@@ -28,4 +28,8 @@ public class Personne {
     public String getEmail() {
         return email;
     }
+    @Override
+    public String toString() {
+        return "Personne [ID=" + id + ", Nom=" + nom + ", Prenom=" + prenom + ", Email=" + email + "]";
+    }
 }

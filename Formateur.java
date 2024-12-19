@@ -42,4 +42,8 @@ public class Formateur extends Personne {
     public void setClasse(classe classe) {
         this.classe = classe;
     }
+    @Override
+    public String toString() {
+        return super.toString() + ", Specialité: " + specialite + ", Salaire: " + salaire;
+    }
 }
