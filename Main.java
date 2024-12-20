@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Application {
+public class Main {
     private static ArrayList<Apprenant> apprenants = new ArrayList<>();
     private static ArrayList<Formateur> formateurs = new ArrayList<>();
     private static ArrayList<classe> classes = new ArrayList<>();
@@ -37,6 +37,7 @@ public class Application {
             }
         }
     }
+
     private static void manageApprenants(Scanner scanner) {
         while (true) {
             System.out.println("\n--- Manage Apprenants ---");
@@ -69,6 +70,7 @@ public class Application {
             }
         }
     }
+
     private static void addApprenant(Scanner scanner) {
         System.out.println("Enter ID:");
         int ID = scanner.nextInt();
@@ -110,6 +112,7 @@ public class Application {
 
         System.out.println("Apprenant added successfully!");
     }
+
     private static void viewApprenants() {
         if (apprenants.isEmpty()) {
             System.out.println("No apprenants available.");
@@ -119,6 +122,7 @@ public class Application {
             }
         }
     }
+
     private static void deleteApprenant(Scanner scanner) {
         System.out.println("Enter the ID of the apprenant to delete:");
         int id = scanner.nextInt();
@@ -138,6 +142,7 @@ public class Application {
         apprenants.remove(apprenantToDelete);
         System.out.println("Apprenant deleted successfully!");
     }
+
     private static void updateApprenant(Scanner scanner) {
         if (apprenants.isEmpty()) {
             System.out.println("No apprenants available to update.");
@@ -188,6 +193,40 @@ public class Application {
 
         System.out.println("Apprenant updated successfully!");
     }
+    private static void manageFormateurs(Scanner scanner) {
+        while (true) {
+            System.out.println("\n--- Manage Formateurs ---");
+            System.out.println("1. Add Formateur");
+            System.out.println("2. View Formateur");
+            System.out.println("3. delete Formateur");
+            System.out.println("4. update Formateur");
+            System.out.println("5. Back to Main Menu");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addFormateur(scanner);
+                    break;
+                case 2:
+                    viewFormateur();
+                    break;
+                case 3:
+                    deleteFormateur(scanner);
+                    return;
+                case 4:
+                    updateFormateur(scanner);
+                    return;
+                case 5:
+                    return;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        }
+    }
+
+
     private static void addFormateur(Scanner scanner) {
         System.out.println("Enter Formateur ID:");
         int id = scanner.nextInt();
@@ -293,6 +332,7 @@ public class Application {
 
         System.out.println("Formateur updated successfully!");
     }
+
     private static void manageClasses(Scanner scanner) {
         while (true) {
             System.out.println("\n--- Manage Classes ---");
