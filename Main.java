@@ -188,3 +188,108 @@ public class Application {
 
         System.out.println("Apprenant updated successfully!");
     }
+    private static void addFormateur(Scanner scanner) {
+        System.out.println("Enter Formateur ID:");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        System.out.println("Enter Formateur Nom:");
+        String nom = scanner.nextLine();
+
+        System.out.println("Enter Formateur Prenom:");
+        String prenom = scanner.nextLine();
+
+        System.out.println("Enter Formateur Email:");
+        String email = scanner.nextLine();
+
+        System.out.println("Enter Formateur Specialite:");
+        String specialite = scanner.nextLine();
+
+        double salaire = 0.0;
+        while (true) {
+            System.out.println("Enter Formateur Salaire:");
+            try {
+                salaire = Double.parseDouble(scanner.nextLine()); // Read and parse the input
+                if (salaire < 0) {
+                    System.out.println("Salaire cannot be negative. Please enter a valid amount.");
+                    continue;
+                }
+                break; // Exit loop if valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid numeric value for salaire.");
+            }
+        }
+
+        Formateur formateur = new Formateur(id, nom, prenom, email, specialite, salaire);
+        formateurs.add(formateur);
+
+        System.out.println("Formateur added successfully!");
+    }
+
+    private static void viewFormateur() {
+        if (formateurs.isEmpty()) {
+            System.out.println("No formateurs available.");
+        } else {
+            for (Formateur formateur : formateurs) {
+                System.out.println(formateur);
+            }
+        }
+    }
+
+    private static void deleteFormateur(Scanner scanner) {
+        System.out.println("Enter the ID of the formateur to delete:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Formateur formateurToDelete = null;
+        for (Formateur formateur : formateurs) {
+            if (formateur.getId() == id) {
+                formateurToDelete = formateur;
+                break;
+            }
+        }
+        if (formateurToDelete == null) {
+            System.out.println("No formateur found with ID " + id);
+            return;
+        }
+        formateurs.remove(formateurToDelete);
+        System.out.println("Formateur deleted successfully!");
+    }
+
+    private static void updateFormateur(Scanner scanner) {
+        System.out.println("Enter the ID of the formateur to update:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Formateur formateurToUpdate = null;
+        for (Formateur formateur : formateurs) {
+            if (formateur.getId() == id) {
+                formateurToUpdate = formateur;
+                break;
+            }
+        }
+
+        if (formateurToUpdate == null) {
+            System.out.println("No formateur found with ID " + id);
+            return;
+        }
+
+        System.out.println("Enter new specialite (leave blank to keep current):");
+        String newSpecialite = scanner.nextLine();
+        if (!newSpecialite.isEmpty()) {
+            formateurToUpdate.setSpecialite(newSpecialite);
+        }
+
+        System.out.println("Enter new salaire (leave blank to keep current):");
+        String salaireInput = scanner.nextLine();
+        if (!salaireInput.isEmpty()) {
+            try {
+                double newSalaire = Double.parseDouble(salaireInput);
+                formateurToUpdate.setSalaire(newSalaire);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid salary. Update aborted.");
+            }
+        }
+
+        System.out.println("Formateur updated successfully!");
+    }
