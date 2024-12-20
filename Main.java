@@ -69,3 +69,44 @@ public class Application {
             }
         }
     }
+    private static void addApprenant(Scanner scanner) {
+        System.out.println("Enter ID:");
+        int ID = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter Name:");
+        String Nom = scanner.nextLine();
+
+        System.out.println("Enter Prenom:");
+        String Prenom = scanner.nextLine();
+
+        System.out.println("Enter Email:");
+        String Email = scanner.nextLine();
+
+        int n = 0;
+        while (true) {
+            System.out.println("Enter number of notes (maximum 10):");
+            try {
+                n = Integer.parseInt(scanner.nextLine());
+                if (n <= 0 || n > 10) {  // Set a reasonable limit on the number of notes
+                    System.out.println("Please enter a valid number of notes between 1 and 10.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number for notes.");
+            }
+        }
+
+        int[] notes = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter note " + (i + 1) + ":");
+            notes[i] = scanner.nextInt();
+        }
+
+        Apprenant apprenant = new Apprenant(ID, Nom, Prenom, Email, notes);
+        apprenants.add(apprenant);
+
+        System.out.println("Apprenant added successfully!");
+    }
