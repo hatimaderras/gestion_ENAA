@@ -110,3 +110,13 @@ public class Application {
 
         System.out.println("Apprenant added successfully!");
     }
+    private static void viewApprenants() {
+        if (apprenants.isEmpty()) {
+            System.out.println("No apprenants available.");
+        } else {
+            for (Apprenant apprenant : apprenants) {
+                System.out.println(apprenant);
+            }
+        }
+    }
+
