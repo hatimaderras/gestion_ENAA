@@ -45,4 +45,15 @@ public class Apprenant {
         }
         return "Apprenant [ID=" + id + ", Nom=" + nom + ", Prenom=" + prenom + ", Email=" + email + ", Notes=" + notesString.toString().trim() + "]";
     }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setEmail(String newEmail) {
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 }
