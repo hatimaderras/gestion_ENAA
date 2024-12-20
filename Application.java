@@ -15,6 +15,8 @@ public class Application {
             System.out.println("2. Manage Formateurs");
             System.out.println("3. Manage Classes");
             System.out.println("4. Exit");
+            System.out.println("enter a number :");
+
 
             int choice = scanner.nextInt();
             scanner.nextLine();
