@@ -37,3 +37,35 @@ public class Application {
             }
         }
     }
+    private static void manageApprenants(Scanner scanner) {
+        while (true) {
+            System.out.println("\n--- Manage Apprenants ---");
+            System.out.println("1. Add Apprenant");
+            System.out.println("2. View Apprenants");
+            System.out.println("3. delete Apprenants");
+            System.out.println("4. update Apprenants");
+            System.out.println("5. Back to Main Menu");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addApprenant(scanner);
+                    break;
+                case 2:
+                    viewApprenants();
+                    break;
+                case 3:
+                    deleteApprenant(scanner);
+                    return;
+                case 4:
+                    updateApprenant(scanner);
+                    return;
+                case 5:
+                    return;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        }
+    }
