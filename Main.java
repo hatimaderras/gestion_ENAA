@@ -138,3 +138,53 @@ public class Application {
         apprenants.remove(apprenantToDelete);
         System.out.println("Apprenant deleted successfully!");
     }
+    private static void updateApprenant(Scanner scanner) {
+        if (apprenants.isEmpty()) {
+            System.out.println("No apprenants available to update.");
+            return;
+        }
+
+        System.out.println("Enter the ID of the apprenant to update:");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+
+        Apprenant apprenantToUpdate = null;
+
+        // Find the apprenant by ID
+        for (Apprenant apprenant : apprenants) {
+            if (apprenant.getId() == id) {
+                apprenantToUpdate = apprenant;
+                break;
+            }
+        }
+
+        if (apprenantToUpdate == null) {
+            System.out.println("No apprenant found with ID: " + id);
+            return;
+        }
+
+        System.out.println("Updating details for: " + apprenantToUpdate);
+
+        // Update the apprenant's name
+        System.out.println("Enter new name (leave blank to keep the current name):");
+        String newName = scanner.nextLine();
+        if (!newName.trim().isEmpty()) {
+            apprenantToUpdate.setNom(newName);
+        }
+
+        // Update the apprenant's prenom
+        System.out.println("Enter new prenom (leave blank to keep the current prenom):");
+        String newPrenom = scanner.nextLine();
+        if (!newPrenom.trim().isEmpty()) {
+            apprenantToUpdate.setPrenom(newPrenom);
+        }
+
+        // Update the apprenant's email
+        System.out.println("Enter new email (leave blank to keep the current email):");
+        String newEmail = scanner.nextLine();
+        if (!newEmail.trim().isEmpty()) {
+            apprenantToUpdate.setEmail(newEmail);
+        }
+
+        System.out.println("Apprenant updated successfully!");
+    }
