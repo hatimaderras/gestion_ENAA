@@ -293,3 +293,81 @@ public class Application {
 
         System.out.println("Formateur updated successfully!");
     }
+    private static void manageClasses(Scanner scanner) {
+        while (true) {
+            System.out.println("\n--- Manage Classes ---");
+            System.out.println("1. Create Class");
+            System.out.println("2. View Classes");
+            System.out.println("3. Assign Apprenant to Class");
+            System.out.println("4. Back to Main Menu");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    createClass(scanner);
+                    break;
+                case 2:
+                    viewClasses();
+                    break;
+                case 3:
+                    assignApprenantToClass();
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        }
+    }
+
+    private static void createClass(Scanner scanner) {
+        System.out.println("Enter Class ID:");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        System.out.println("Enter Class Name:");
+        String nom = scanner.nextLine();
+
+        if (formateurs.isEmpty()) {
+            System.out.println("No formateurs available. Add a formateur first.");
+            return;
+        }
+
+        System.out.println("Select Formateur by Index:");
+        for (int i = 0; i < formateurs.size(); i++) {
+            System.out.println(i + ". " + formateurs.get(i).getNom());
+        }
+        int formateurIndex = scanner.nextInt();
+        scanner.nextLine();
+
+        if (formateurIndex < 0 || formateurIndex >= formateurs.size()) {
+            System.out.println("Invalid index. Returning to menu.");
+            return;
+        }
+
+        Formateur formateur = formateurs.get(formateurIndex);
+        classe classe = new classe(id, nom, formateur);
+        classes.add(classe);
+
+        System.out.println("Class created successfully!");
+
+
+    }
+
+    private static void viewClasses() {
+        if (classes.isEmpty()) {
+            System.out.println("No classes available.");
+            return;
+        }
+
+        for (classe classe : classes) {
+            System.out.println(classe);
+        }
+    }
+
+    private static void assignApprenantToClass() {
+        System.out.println("Assign Apprenant to Class (to be implemented).");
+    }
+}
