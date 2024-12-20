@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Application {
     private static ArrayList<Apprenant> apprenants = new ArrayList<>();
     private static ArrayList<Formateur> formateurs = new ArrayList<>();
     private static ArrayList<classe> classes = new ArrayList<>();
