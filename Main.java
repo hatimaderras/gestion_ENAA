@@ -119,4 +119,22 @@ public class Application {
             }
         }
     }
+    private static void deleteApprenant(Scanner scanner) {
+        System.out.println("Enter the ID of the apprenant to delete:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
 
+        Apprenant apprenantToDelete = null;
+        for (Apprenant apprenant : apprenants) {
+            if (apprenant.getId() == id) {
+                apprenantToDelete = apprenant;
+                break;
+            }
+        }
+        if (apprenantToDelete == null) {
+            System.out.println("No apprenant found with ID " + id);
+            return;
+        }
+        apprenants.remove(apprenantToDelete);
+        System.out.println("Apprenant deleted successfully!");
+    }
